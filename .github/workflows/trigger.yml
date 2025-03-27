@@ -15,13 +15,13 @@ jobs:
         with:
           app-id: ${{ secrets.GH_APP_ID }}
           private-key: ${{ secrets.GH_APP_PRIVATE_KEY }}
-          owner: w-rin
+          owner: ippanpeople
           repositories: |
-            dispatch_receive_repo
+            repo2
 
       - name: Trigger repository_dispatch
         run: |
-          curl -X POST https://api.github.com/repos/w-rin/dispatch_receive_repo/dispatches \
+          curl -X POST https://api.github.com/repos/ippanpeople/repo2/dispatches \
             -H "Authorization: token ${{ steps.generate_token.outputs.token }}" \
             -H "Accept: application/vnd.github.v3+json" \
             -d '{"event_type":"on-demand-test","client_payload":{"env": "dev"}}'
